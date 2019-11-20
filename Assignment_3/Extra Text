@@ -1,0 +1,122 @@
+if(j != 0 and i != 0 and j!=col and i!= row):
+    grid[i][j - 1] +=1
+    grid[i + 1][j - 1] +=1
+    grid[i - 1][j] +=1
+    grid[i - 1][j - 1] +=1
+    grid[i][j + 1] +=1
+    grid[i + 1][j] +=1
+    grid[i - 1][j + 1] +=1
+    grid[i + 1][j + 1] +=1
+
+if(i == row):
+    grid[i][j - 1] +=1
+    grid[i + 1][j - 1] +=1
+    grid[i - 1][j] +=1
+if(i == 0):
+    grid[i + 1][j + 1] +=1
+    grid[i][j + 1] +=1
+    grid[i + 1][j] +=1
+if(j == col):
+    grid[i - 1][j] +=1
+    grid[i - 1][j + 1] +=1
+    grid[i][j + 1] +=1
+if(j == 0):
+    grid[i - 1][j - 1] +=1
+    grid[i - 1][j] +=1
+    grid[i][j - 1] +=1
+
+
+    if i == 0 and j == 0:
+        if(grid[i + 1][j + 1], grid[i][j + 1], grid[i + 1][j] != -1):
+            (grid[i + 1][j + 1]) +=1
+            (grid[i][j + 1]) +=1
+            (grid[i + 1][j]) +=1
+
+    elif i == 0 and j == col:
+        if(grid[i][j-1],grid[i+1][j-1],grid[i+1][j] != -1):
+            (grid[i][j-1]) += 1
+            (grid[i+1][j-1]) += 1
+            (grid[i+1][j]) += 1
+    elif i == row and j == 0:
+        if(grid[i-1][j],grid[i-1][j+1],grid[i][j+1] !=-1):
+            (grid[i-1][j])+=1
+            (grid[i-1][j+1])+=1
+            (grid[i][j+1])+=1
+    elif i == row and j == col:
+        if(grid[i][j-1], grid[i-1][j-1],grid[i-1][j] !=-1):
+            grid[i][j-1]+=1
+            grid[i-1][j-1]+=1
+            grid[i-1][j]+=1
+    else:
+        if grid[i][j - 1] != -1:
+            grid[i][j - 1] +=1
+        if grid[i + 1][j - 1] != -1:
+            grid[i + 1][j - 1] +=1
+        if grid[i - 1][j] != -1:
+            grid[i - 1][j] +=1
+        if grid[i - 1][j - 1] != -1:
+            grid[i - 1][j - 1] +=1
+        if grid[i][j + 1] != -1:
+            grid[i][j + 1] +=1
+        if grid[i + 1][j] != -1:
+            grid[i + 1][j] +=1
+        if grid[i - 1][j + 1] != -1:
+            grid[i - 1][j + 1] +=1
+        if grid[i + 1][j + 1] != -1:
+            grid[i + 1][j + 1] +=1
+
+
+            if grid[0][0] == -1:
+                if grid[0][1] != -1:
+                    grid[0][1] += 1
+                if grid[1][0] != -1:
+                    grid[1][0] += 1
+                if grid[1][1] != -1:
+                    grid[1][1] += 1
+
+            elif grid[0][col -1] == -1:
+                if grid[1][col-2] != -1:
+                    grid[1][col-2] += 1
+                if grid[0][col-2] != -1:
+                    grid[0][col-2] += 1
+                if grid[1][col-1] != -1:
+                    grid[1][col-1] += 1
+
+            elif grid[row-1][0] == -1:
+                if grid[row-2][0] != -1:
+                    grid[row-2][0] +=1
+                if grid[row-2][1] != -1:
+                    grid[row-2][0] += 1
+                if grid[row-1][1] != -1:
+                    grid[row-1][1] += 1
+
+            elif grid[row -1][col -1] == -1:
+                if grid[row -2][col -1] != -1:
+                    grid[row -2][col -1] += 1
+                if grid[row - 2][col -2] != -1:
+                    grid[row - 2][col -2] += 1
+                if grid[row - 1][col - 2] != -1:
+                    grid[row - 1][col - 2] += 1
+
+
+                    if(grid[i][j] == -1 and i==row-1 or i==0 and j == col-1 or i==0):
+                        for i in range(-1, 1):
+                            for j in range(-1, 1):
+                                if(grid[i][j] != -1):
+                                    grid[i][j] +=1
+
+
+                                    if(grid[i][j] == -1):
+                                        if(0<i<row and 0<j<col):
+                                            for ii in range(-1, 2):
+                                                for jj in range(-1, 2):
+                                                    if(grid[ii + i][jj + j] != -1):
+                                                        grid[ii + i][jj +j] +=1
+
+                                        elif(i== 0 and j ==0):
+                                            if grid[0][1] != -1:
+                                                grid[0][1] += 1
+                                            if grid[1][0] != -1:
+                                                grid[1][0] += 1
+                                            if grid[1][1] != -1:
+                                                grid[1][1] += 1
