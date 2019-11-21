@@ -12,20 +12,20 @@ class Monster():
         if attack_name in self.known_attacks.keys() and attack_name not in self.attacks.keys():
             self.attacks[attack_name] = self.known_attacks.get(attack_name)
             min_value = min(self.attacks.keys(), key=(lambda k: self.attacks[k]))
-            
             if len(self.attacks) > 4 and attack_name != min_value:
+                #FIXME
+                #change output error where attack_name is taken out
                 for keys, values in self.attacks.items():
                     if self.attacks[min_value] == values and min(min_value, keys) == keys:
                         min_value = keys
-                print(min_value)
                 del self.attacks[min_value]
-            if len(self.attacks) > 4 and attack_name == min_value:
+            elif len(self.attacks) > 4 and attack_name == min_value:
+                #FIXME
                 del self.attacks[min_value]
                 next_min_value = min(self.attacks.keys(), key=(lambda k: self.attacks[k]))
                 for keys, values in self.attacks.items():
                     if self.attacks[next_min_value] == values and min(min_value, keys) == keys:
                         next_min_value = keys
-                print(next_min_value)
                 del self.attacks[next_min_value]
                 self.attacks[min_value] = self.known_attacks.get(min_value)
             return True
