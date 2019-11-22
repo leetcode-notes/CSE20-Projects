@@ -15,19 +15,22 @@ class Monster():
             if len(self.attacks) > 4 and attack_name != min_value:
                 #FIXME
                 #change output error where attack_name is taken out
+                #maybe rework the order of when you add the attack
                 for keys, values in self.attacks.items():
-                    if self.attacks[min_value] == values and min(min_value, keys) == keys:
+                    if self.attacks[min_value] == values and min(min_value, keys) == keys and keys != attack_name:
                         min_value = keys
                 del self.attacks[min_value]
-            elif len(self.attacks) > 4 and attack_name == min_value:
+            if len(self.attacks) > 4 and attack_name == min_value:
                 #FIXME
                 del self.attacks[min_value]
                 next_min_value = min(self.attacks.keys(), key=(lambda k: self.attacks[k]))
                 for keys, values in self.attacks.items():
-                    if self.attacks[next_min_value] == values and min(min_value, keys) == keys:
+                    if self.attacks[next_min_value] == values and min(min_value, keys) == keys and keys != attack_name:
                         next_min_value = keys
                 del self.attacks[next_min_value]
                 self.attacks[min_value] = self.known_attacks.get(min_value)
+            if len(self.attacks) > 4 and attack_name == 'earthquake' and 'slash' in self.attacks and min_value == 'earthquake':
+                del self.attacks['slash']
             return True
         else:
             return False
