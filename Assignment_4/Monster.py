@@ -35,15 +35,48 @@ class Monster():
         else:
             return False
 
-	def win_fight(self):
-		self.exp += 5
+    def win_fight(self):
+        self.exp+=5
         self.current_hp = self.max_hp
 
-	def lose_fight(self):
-		self.exp += 1
+    def lose_fight(self):
+        self.exp+=5
         self.current_hp = self.max_hp
+
+class Dragon(Monster):
+
+    def __init__(self, name, hp=20):
+        self.name = name
+        super().__init__(exp, known_attacks, current_hp, max_hp)
+
+class Ghost(Monster):
+
+    def __init__(self, name, hp=20):
+        self.name = name
+        super().__init__(exp, known_attacks, current_hp, max_hp)
 
 def monster_fight(monster1, monster2):
-	while(monster1.current_hp > 0 and monster2.current_hp > 0):
-        rounds = 0
-        
+    round = 0  #counts how many rounds have gone by
+    monster2attackLis = []
+    monster1attackLis = []
+
+    for values in monster2.attacks.values():
+        monster2attackLis.append(values)
+    for values in monster1.attacks.values():
+        monster1attackLis.append(values)
+
+    monster2attackLis = sorted(monster2attackLis, reverse=True)
+    monster2attackLis = sorted(monster1attackLis, reverse=True)
+        #-----------------------------------------#
+
+    winnerList = []  #list of the winners moves
+    winner  = None  #winner in the end
+
+    m1Counter = 0
+    m2Counter = 0
+
+    monster1.current_hp -= monster2attackLis[0]
+    print(monster1.current_hp)
+    
+
+    #return round, winnerList, winner
