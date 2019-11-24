@@ -1,3 +1,5 @@
+import operator
+
 class Monster():
     def __init__(self, name, hp=20):
         self.exp = 0
@@ -40,7 +42,7 @@ class Monster():
         self.current_hp = self.max_hp
 
     def lose_fight(self):
-        self.exp+=5
+        self.exp+=1
         self.current_hp = self.max_hp
 
 class Dragon(Monster):
@@ -56,9 +58,13 @@ class Ghost(Monster):
         super().__init__(exp, known_attacks, current_hp, max_hp)
 
 def monster_fight(monster1, monster2):
-    round = 0  #counts how many rounds have gone by
+
+    M1round = 0
+    M2round = 0
     monster2attackLis = []
     monster1attackLis = []
+    winner = None
+    round = 0
 
     for values in monster2.attacks.values():
         monster2attackLis.append(values)
@@ -66,17 +72,89 @@ def monster_fight(monster1, monster2):
         monster1attackLis.append(values)
 
     monster2attackLis = sorted(monster2attackLis, reverse=True)
-    monster2attackLis = sorted(monster1attackLis, reverse=True)
+    monster1attackLis = sorted(monster1attackLis, reverse=True)
         #-----------------------------------------#
 
+    M1attacknames = sorted(monster1.attacks.items(), key=operator.itemgetter(1), reverse=True)
+    M2attacknames = sorted(monster2.attacks.items(), key=operator.itemgetter(1), reverse=True)
+
     winnerList = []  #list of the winners moves
-    winner  = None  #winner in the end
 
-    m1Counter = 0
-    m2Counter = 0
+    index1 = 0
+    index2 = 0
 
-    monster1.current_hp -= monster2attackLis[0]
-    print(monster1.current_hp)
-    
+    if all(key == 'wait' for key in monster1.attacks.keys()) and all(key == 'wait' for key in monster1.attacks.keys()):
+        return (-1, None, None)
 
-    #return round, winnerList, winner
+    while(monster2.current_hp > 0):
+
+        try:
+            monster2.current_hp -= monster1attackLis[index1]
+            index1 += 1
+            M1round += 1
+
+        except IndexError:
+
+            index1 = 0
+
+    while(monster1.current_hp > 0):
+
+        try:
+            monster1.current_hp -= monster2attackLis[index2]
+            index2 += 1
+            M2round += 1
+
+        except IndexError:
+
+            index2 = 0
+
+    if(M1round == M2round):
+        winner = monster1
+        round = M1round
+        monster1.win_fight()
+        monster2.lose_fight()
+        index = 0
+        i = 0
+        while i < round:
+            try:
+                winnerList.append(M1attacknames[index][0])
+                index += 1
+                i+=1
+            except:
+                index = 0
+                continue
+
+    if(M1round < M2round):
+        winner = monster1
+        monster1.win_fight()
+        monster2.lose_fight()
+        round = M1round
+        index = 0
+        i = 0
+        while i < round:
+            try:
+                winnerList.append(M1attacknames[index][0])
+                index += 1
+                i+=1
+            except:
+                index = 0
+                continue
+
+    if(M2round < M1round):
+        winner = monster2
+        monster2.win_fight()
+        monster1.lose_fight()
+        round = M2round
+        index = 0
+        i = 0
+        while i < round:
+            try:
+                winnerList.append(M2attacknames[index][0])
+                index += 1
+                i+=1
+            except:
+                index = 0
+                continue
+
+
+    return (round, winner, winnerList)
