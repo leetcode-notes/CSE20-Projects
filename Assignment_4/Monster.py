@@ -9,6 +9,7 @@ class Monster():
             'whirlwind': 3, 'earthquake': 2, 'double_hit': 4, 'wait': 0}
         self.current_hp = hp
         self.max_hp = hp
+        self.type = 'normal'
 
     def add_attack(self, attack_name):
         if attack_name in self.known_attacks and attack_name not in self.attacks:
@@ -48,14 +49,40 @@ class Monster():
 class Dragon(Monster):
 
     def __init__(self, name, hp=20):
-        self.name = name
-        super().__init__(exp, known_attacks, current_hp, max_hp)
+        super().__init__(name, hp)
+        self.type = 'dragon'
+        self.counter = 10
+
+    def win_fight(self):
+        self.exp+=5
+        self.current_hp = self.max_hp
+        if self.exp >= self.counter:
+            self.counter += 10
+            for key in self.attacks:
+                self.attacks[key] = self.attacks.get(key) + 1
+
+    def lose_fight(self):
+        self.exp += 1
+        self.current_hp = self.max_hp
 
 class Ghost(Monster):
 
     def __init__(self, name, hp=20):
-        self.name = name
-        super().__init__(exp, known_attacks, current_hp, max_hp)
+        super().__init__(name, hp)
+        self.type = 'ghost'
+        self.counter = 10
+
+    def win_fight(self):
+        self.exp+=5
+        self.current_hp = self.max_hp
+        if self.exp >= self.counter:
+            self.counter += 10
+            self.max_hp += 5
+
+
+    def lose_fight(self):
+        self.exp += 1
+        self.current_hp = self.max_hp
 
 def monster_fight(monster1, monster2):
 
@@ -151,7 +178,7 @@ def monster_fight(monster1, monster2):
             try:
                 winnerList.append(M2attacknames[index][0])
                 index += 1
-                i+=1
+                i += 1
             except:
                 index = 0
                 continue

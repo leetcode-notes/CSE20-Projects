@@ -1,20 +1,30 @@
-True
-True
-True
-False
-True
-True
-True
-False
-True
-True
-True
-False
-False
-False
-True
-True
-False
-True
-False
-{'fire_storm': 3}
+12
+b
+{'double_hit': 4}
+5
+45
+['double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit']
+12
+b
+{'double_hit': 4}
+10
+50
+['double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit', 'double_hit']
+17
+a
+{'ice_storm': 3}
+7
+45
+['ice_storm', 'ice_storm', 'ice_storm', 'ice_storm', 'ice_storm', 'ice_storm', 'ice_storm', 'ice_storm', 'ice_storm', 'ice_storm', 'ice_storm', 'ice_storm', 'ice_storm', 'ice_storm', 'ice_storm', 'ice_storm', 'ice_storm']
+29
+b
+{'wait': 0, 'ice_storm': 3}
+16
+50
+['ice_storm', 'wait', 'ice_storm', 'wait', 'ice_storm', 'wait', 'ice_storm', 'wait', 'ice_storm', 'wait', 'ice_storm', 'wait', 'ice_storm', 'wait', 'ice_storm', 'wait', 'ice_storm', 'wait', 'ice_storm', 'wait', 'ice_storm', 'wait', 'ice_storm', 'wait', 'ice_storm', 'wait', 'ice_storm', 'wait', 'ice_storm']
+23
+b
+{'wait': 0, 'double_hit': 4}
+21
+55
+['double_hit', 'wait', 'double_hit', 'wait', 'double_hit', 'wait', 'double_hit', 'wait', 'double_hit', 'wait', 'double_hit', 'wait', 'double_hit', 'wait', 'double_hit', 'wait', 'double_hit', 'wait', 'double_hit', 'wait', 'double_hit', 'wait', 'double_hit']
