@@ -77,7 +77,8 @@ class Ghost(Monster):
         self.current_hp = self.max_hp
         if self.exp >= self.counter:
             self.counter += 10
-            self.max_hp += 5
+            self.max_hp = self.max_hp + 5
+            self.current_hp = self.max_hp
 
 
     def lose_fight(self):
@@ -142,7 +143,7 @@ def monster_fight(monster1, monster2):
         monster2.lose_fight()
         index = 0
         i = 0
-        while i < round:
+        while i < M1round:
             try:
                 winnerList.append(M1attacknames[index][0])
                 index += 1
@@ -151,7 +152,7 @@ def monster_fight(monster1, monster2):
                 index = 0
                 continue
 
-    if(M1round < M2round):
+    elif(M1round < M2round):
         winner = monster1
         monster1.win_fight()
         monster2.lose_fight()
@@ -167,14 +168,14 @@ def monster_fight(monster1, monster2):
                 index = 0
                 continue
 
-    if(M2round < M1round):
+    elif(M2round < M1round):
         winner = monster2
         monster2.win_fight()
         monster1.lose_fight()
         round = M2round
         index = 0
         i = 0
-        while i < round:
+        while i < M2round:
             try:
                 winnerList.append(M2attacknames[index][0])
                 index += 1
