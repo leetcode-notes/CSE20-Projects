@@ -2,12 +2,12 @@ import unittest
 
 lis = []
 
-def getMean():
-    pass
-    '''
-    take in entire list along with counter and then divide by the counter
-    may take a while but this will be the initial test
-    '''
+def getMean(lis):
+    total = 0
+    for i in lis:
+        total += i
+
+    return total/len(lis)
 
 def getMode():
     '''
@@ -25,20 +25,29 @@ def getMedian():
     '''
     pass
 
-def getMin():
+def getMin(lis, i):
+    min = lis[0]
     '''
-    divide and conquer
+    if lis[i] <= min:
+        min = lis[i]
+    else:
+        getMin(lis, i+ len(lis)/2))
     '''
-    pass
+
+    return min
 
 def getMax():
-    '''
-    divide and conquer
-    '''
-    pass
+    max = lis[0]
+
+    return max
 
 def main():
     lis = input().split()
+    print("Mean:", getMean(lis))
+    print("Median:", getMedian(lis))
+    print("Mode:", getMode(lis))
+    print("Maximum:", getMax(lis))
+    print("Minimum:", getMin(lis))
 
 if __name__ == '__main__':
     main()
