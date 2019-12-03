@@ -1,53 +1,70 @@
 import unittest
 
-lis = []
-
 def getMean(lis):
     total = 0
-    for i in lis:
-        total += i
+    for i in range(len(lis)):
+        total += lis[i]
 
-    return total/len(lis)
+    mean = round(total/len(lis), 2)
+    mean = "%0.2f" % mean
+    return mean
 
-def getMode():
-    '''
-    maybe we can use split??
-    alternative is to just mark one number and see which is the greatest
-    keep taking out numbers until one has taken out the most
-    '''
-    pass
+def getMode(lis):
+    mode = 0
+    newlis = [i//10 * 10 for i in lis]
+    counter = 0
+    for i in newlis:
+        curr = newlis.count(i)
+        if(curr>counter):
+            counter = curr
+            mode = i
 
-def getMedian():
-    '''
-    order the entire list
-    then find the middle
-    if the middle is even, then add two numbers together then divide by two
-    '''
-    pass
+    return int(mode)
 
-def getMin(lis, i):
+
+def getMedian(lis):
+    lis.sort()
+    median = 0
+
+    if(len(lis) % 2 == 0):
+        median = (lis[int(len(lis)/2)]+lis[int(len(lis)/2 -1)])/2
+    if(len(lis) % 2 != 0):
+        median = (lis[int(len(lis)//2)])
+
+    median = round(median, 2)
+    median = "%0.2f" % median
+    return median
+
+def getMin(lis):
     min = lis[0]
-    '''
-    if lis[i] <= min:
-        min = lis[i]
-    else:
-        getMin(lis, i+ len(lis)/2))
-    '''
+    for i in range(len(lis)):
+        if lis[i] < min:
+            min = lis[i]
 
-    return min
+    #still try to implement divide and conquer
+    return int(min)
 
-def getMax():
+def getMax(lis):
     max = lis[0]
+    for i in range(len(lis)):
+        if lis[i] > max:
+            max = lis[i]
 
-    return max
+    #still try to implement divide and conquer
+    return int(max)
 
 def main():
-    lis = input().split()
-    print("Mean:", getMean(lis))
-    print("Median:", getMedian(lis))
-    print("Mode:", getMode(lis))
-    print("Maximum:", getMax(lis))
-    print("Minimum:", getMin(lis))
+    lis = input().split(',')
+    lis = [float(i) for i in lis]
+
+    print("Mean   ", getMean(lis))
+    print("Median ", getMedian(lis))
+    print("Mode   ", getMode(lis))
+    print("Minimum", getMin(lis))
+    print("Maximum", getMax(lis))
+
+
+
 
 if __name__ == '__main__':
     main()
