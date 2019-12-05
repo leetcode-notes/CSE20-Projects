@@ -64,7 +64,5 @@ def main():
     print("Maximum", getMax(lis))
 
 
-
-
 if __name__ == '__main__':
     main()
