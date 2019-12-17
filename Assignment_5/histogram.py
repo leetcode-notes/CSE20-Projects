@@ -43,11 +43,9 @@ def main():
     max = 0
     maxMode = getMaxMode(lis)
 
-
     for i in lis:
         if i%maxDiv<10 and i%maxDiv>=0:
             max+=1
-
 
     for i in range(0, maxDiv+10, 10):
         if(i == 0 and maxDiv >= 100):
@@ -69,7 +67,6 @@ def main():
             print(" ", end="")
 
         print("", counter)
-
 
 if __name__ == '__main__':
     main()

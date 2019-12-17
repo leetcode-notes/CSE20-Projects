@@ -10,11 +10,17 @@ class Students:
         ''' Add a student to the students dictionary.
             Return True if successful, else return False. '''
         # YOUR CODE HERE
+        self.students.append(student)
+
+        return False
+
         pass
 
     def add_students(self, students):
         ''' Add list of students to the students dictionary. '''
-        # YOUR CODE HERE
+        for key,value in students:
+            self.students[key] = value
+
         pass
 
     def fetch_students(self):
